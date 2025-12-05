@@ -1,0 +1,19 @@
+name: auditing-logging
+version: 0.1.0
+
+authors:
+  - HackerOS Team
+
+description: |
+  Auditing and Logging tool for Security Mode, handling logs with rotation and forwarding.
+
+license: MIT
+
+targets:
+  auditing-logging:
+    main: src/auditing-logging.cr
+
+crystal: ">= 1.0.0"
+
+dependencies:
+  # No external dependencies needed
