@@ -7,7 +7,7 @@ authors:
 description: |
   CLI tool for Security Mode, handling commands to interact with the core daemon via JSON files.
 
-license: MIT
+license: GPL-3.0
 
 targets:
   security:
