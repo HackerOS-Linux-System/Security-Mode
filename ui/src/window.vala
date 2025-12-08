@@ -4,7 +4,6 @@ using GLib;
 
 public class SecurityModeWindow : Gtk.Window {
     private const string TMP_DIR = "/tmp/Security-Mode";
-
     private Gtk.ComboBoxText profile_combo;
     private Gtk.Button start_button;
     private Gtk.Button stop_button;
@@ -13,10 +12,10 @@ public class SecurityModeWindow : Gtk.Window {
     private Gtk.TextView log_view;
 
     public SecurityModeWindow () {
-        Object (
+        GLib.Object (
             title: "Security Mode UI",
             default_width: 600,
-            default_height: 400
+                default_height: 400
         );
 
         var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
@@ -69,11 +68,11 @@ public class SecurityModeWindow : Gtk.Window {
         string profile = profile_combo.get_active_text ();
         if (profile != null) {
             var data = new Json.Builder ()
-                .begin_object ()
-                .set_member_name ("command").add_string_value ("start")
-                .set_member_name ("profile").add_string_value (profile)
-                .set_member_name ("timestamp").add_string_value (new DateTime.now_utc ().to_string ())
-                .end_object ();
+            .begin_object ()
+            .set_member_name ("command").add_string_value ("start")
+            .set_member_name ("profile").add_string_value (profile)
+            .set_member_name ("timestamp").add_string_value (new DateTime.now_utc ().to_string ())
+            .end_object ();
 
             write_json_file ("start.json", data.get_root ().get_object ());
             update_log ("Started with profile: " + profile);
@@ -82,10 +81,10 @@ public class SecurityModeWindow : Gtk.Window {
 
     private void on_stop_clicked () {
         var data = new Json.Builder ()
-            .begin_object ()
-            .set_member_name ("command").add_string_value ("stop")
-            .set_member_name ("timestamp").add_string_value (new DateTime.now_utc ().to_string ())
-            .end_object ();
+        .begin_object ()
+        .set_member_name ("command").add_string_value ("stop")
+        .set_member_name ("timestamp").add_string_value (new DateTime.now_utc ().to_string ())
+        .end_object ();
 
         write_json_file ("stop.json", data.get_root ().get_object ());
         update_log ("Stopped Security Mode");
@@ -97,10 +96,10 @@ public class SecurityModeWindow : Gtk.Window {
 
     private void on_logs_clicked () {
         var data = new Json.Builder ()
-            .begin_object ()
-            .set_member_name ("command").add_string_value ("logs")
-            .set_member_name ("timestamp").add_string_value (new DateTime.now_utc ().to_string ())
-            .end_object ();
+        .begin_object ()
+        .set_member_name ("command").add_string_value ("logs")
+        .set_member_name ("timestamp").add_string_value (new DateTime.now_utc ().to_string ())
+        .end_object ();
 
         write_json_file ("logs_request.json", data.get_root ().get_object ());
         update_log ("Logs requested. Check logs.json later.");
@@ -127,9 +126,11 @@ public class SecurityModeWindow : Gtk.Window {
 
     private void write_json_file (string filename, Json.Object data) {
         ensure_tmp_dir ();
-        var path = Path.build_filename (TMP_DIR, filename);
+        var path = GLib.Path.build_filename (TMP_DIR, filename);
         var generator = new Json.Generator ();
-        generator.set_root (new Json.Node.alloc ().set_object (data));
+        var node = new Json.Node.alloc ();
+        node.set_object (data);
+        generator.set_root (node);
         try {
             generator.to_file (path);
             stdout.printf ("Wrote JSON to %s\n", path);
@@ -140,7 +141,7 @@ public class SecurityModeWindow : Gtk.Window {
 
     private Json.Object? read_json_file (string filename) {
         ensure_tmp_dir ();
-        var path = Path.build_filename (TMP_DIR, filename);
+        var path = GLib.Path.build_filename (TMP_DIR, filename);
         if (FileUtils.test (path, FileTest.EXISTS)) {
             try {
                 var parser = new Json.Parser ();
