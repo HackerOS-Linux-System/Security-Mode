@@ -1,3 +1,4 @@
 // curl
 > cd /usr/lib/HackerOS/
+> curl -L -o  "https://github.com/HackerOS-Linux-System/Security-Mode/releases/download/v0.1/core"
 > curl -L -o  "https://github.com/HackerOS-Linux-System/Security-Mode/releases/download/v0.1/"
