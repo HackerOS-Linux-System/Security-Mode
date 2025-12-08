@@ -1,1 +1,8 @@
-
+> sudo rm -rf ~/.hackeros/Security-Mode
+> sudo rm -rf /usr/share/wayland-sessions/Security-Mode.desktop
+> sudo rm -rf /usr/lib/HackerOS/Security-Mode
+> sudo rm -rf ~/.hackeros/Security-Mode/core
+> sudo rm -rf ~/.hackeros/Security-Mode/auditing-logging
+> sudo rm -rf ~/.hackeros/Security-Mode/module-runner
+> sudo rm -rf ~/.hackeros/Security-Mode/ui
+> sudo rm rf ~/.hackeros/Security-Mode/policy-manager
