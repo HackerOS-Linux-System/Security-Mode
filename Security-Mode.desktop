@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Security Mode
+Comment=Special session on cybersecurity.
+Exec=cage /usr/lib/Security-Mode
+Type=Application
+DesktopNames=example-wayland
