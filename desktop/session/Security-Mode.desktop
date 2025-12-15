@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Security Mode
 Comment=Special session on cybersecurity.
-Exec=cage /usr/lib/Security-Mode
+Exec=/home/%u/.hackeros/Security-Mode/bin/gui --session
 Type=Application
 DesktopNames=HackerOS-Sessions
