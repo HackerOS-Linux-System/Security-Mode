@@ -13,3 +13,11 @@
 *.toml linguist-detectable=true
 *.toml linguist-documentation=false
 *.toml linguist-language=TOML
+
+*.go linguist-detectable=true
+*.go linguist-documentation=false
+*.go linguist-language=GO
+
+*.mod linguist-detectable=true
+*.mod linguist-documentation=false
+*.mod linguist-language=GO
